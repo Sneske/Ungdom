@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="wrapper" class="grid grid-cols-7 bg-yellow-300">
+        <div id="content" class="col-span-6 grid grid-cols-3 gap-4">
+            {% for product in products %}
+                <div id="product-container" class="bg-green-300 w-full h-300">
+                    <img src="data:{{ product.mimetype }};base64,{{ product.img|b64encode }}" alt="{{ product.imgname }}">
+                    <h2>Mindstepris: {{product.mindstepris}} kr</h2>
+                    <h4>{{product.beskrivelse}}</h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

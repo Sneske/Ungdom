@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+</head>
+
+<body>
+  <nav class="bg-green-800 p-5">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="/" class="text-white text-2xl font-bold"></a>
+      <div class="space-x-4">
+        <a href="/login" class="text-white hover:text-green-500">Login</a>
+        <a href="/signup" class="text-white hover:text-green-500">Signup</a>
+        <a href="/produkter" class="text-white hover:text-green-500">Produkter på auktion</a>
+        <a href="/tilfoj" class="text-white hover:text-green-500">tilføj</a>
+      </div>
+      <h1 class="text-lg">{{ session.username }}</h1>
+    </div>
+  </nav>
+
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>
