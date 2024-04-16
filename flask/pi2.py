@@ -11,7 +11,7 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 from gpiozero import LED, Button
 from signal import pause
-from gpiozero import Button
+
 currentDay = "currentDay"
 selectDay = "selectDay"
 nextDay = "nextDay"
@@ -20,13 +20,10 @@ currentTime = 12
 selectTime = 11
 dayScroll = 0
 #logging.basicConfig(level=logging.DEBUG)
-on = True
+
 days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
 
-key1 = Button(5)
-key2 = Button(6)
-key3 = Button(13)
-key4 = Button(19)
+
 def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
 
 
@@ -86,47 +83,16 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,da
                 text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
 
     epd.display(epd.getbuffer(Himage))
+    print("hi")
+    time.sleep(200)
     
 
     #logging.info("Clear...")
     #epd.Clear(0xFF)
     #logging.info("Goto Sleep...")
-    
-
-def handleBtnPress(btn):
-    pinNum = btn.pin.number
-    switcher = {
-        5: "Hello, World!",
-        6: "This is my first \nRPi project.",
-        13: "Hope you lik it.",
-    }
-    if pinNum == 19:
-        return on == False
-
-    if pinNum == 13:
-        selectTime += 1
-        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-    msg = switcher.get(pinNum, "Error")
-    print(msg)
-
-
+    epd.sleep()
 try:
-    print(2)
     run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-    while on:
-        if key1.is_pressed == True:
-            selectTime -= 1
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage1")
-            time.sleep(0.5)
-        if key2.is_pressed == True:
-            selectTime += 1
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage2")
-            time.sleep(0.5)
-        key4.when_pressed = handleBtnPress
-    print(1)
-    
 
 except IOError as e:
     logging.info(e)
