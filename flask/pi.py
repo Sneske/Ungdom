@@ -161,10 +161,11 @@ try:
 
         if key3.is_pressed == True:
             events = Event.query.all()
-            events = [event.to_dict() for event in events]
+            #events = [event.to_dict() for event in events]
+            for event in events:
+                print(event.id)
             
             
-            print(events)
             time.sleep(0.5)
         
         if key4.is_pressed == True:
