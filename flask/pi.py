@@ -32,8 +32,7 @@ key1 = Button(5)
 key2 = Button(6)
 key3 = Button(13)
 key4 = Button(19)
-events = Event.query.all()
-events = [event.to_dict() for event in events]
+
 
 database = os.getcwd() + '/events.db'
 app = Flask(__name__)
@@ -56,6 +55,8 @@ class Event(db.Model):
             'end': self.end.isoformat()
         }
 
+events = Event.query.all()
+events = [event.to_dict() for event in events]
   
 
 
