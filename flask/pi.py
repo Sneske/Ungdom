@@ -143,7 +143,10 @@ def handleBtnPress(btn):
     msg = switcher.get(pinNum, "Error")
     print(msg)
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
+print(3)
 try:
     print(2)
     run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
