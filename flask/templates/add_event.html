@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{{ url_for('add_event') }}" method="post">
-    <label for="title">Event Title:</label>
-    <input type="text" id="title" name="title">
-    <label for="start">Start Date:</label>
-    <input type="date" id="start" name="start">
-    <label for="end">End Date:</label>
-    <input type="date" id="end" name="end">
-    <button type="submit">Add Event</button>
-</form>
+<div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+    <h1 class="text-xl font-bold text-center mb-4">Add a New Event</h1>
+    <form action="{{ url_for('add_event') }}" method="POST" class="space-y-4">
+        <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+            <input type="text" name="title" id="title"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                required>
+        </div>
+        <div>
+            <label for="start" class="block text-sm font-medium text-gray-700">Start Date and Time</label>
+            <input type="datetime-local" name="start" id="start"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                required>
+        </div>
+        <div>
+            <label for="end" class="block text-sm font-medium text-gray-700">End Date and Time</label>
+            <input type="datetime-local" name="end" id="end"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                required>
+        </div>
+        <div class="text-center">
+            <button type="submit"
+                class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring ring-indigo-200 active:bg-indigo-700 transition ease-in-out duration-150">Add
+                Event</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
