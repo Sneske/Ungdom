@@ -127,21 +127,7 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,da
     #logging.info("Goto Sleep...")
     
 
-def handleBtnPress(btn):
-    pinNum = btn.pin.number
-    switcher = {
-        5: "Hello, World!",
-        6: "This is my first \nRPi project.",
-        13: "Hope you lik it.",
-    }
-    if pinNum == 19:
-        return on == False
 
-    if pinNum == 13:
-        selectTime += 1
-        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-    msg = switcher.get(pinNum, "Error")
-    print(msg)
 
 
 @app.route('/')
