@@ -3,7 +3,9 @@
 import sys
 import os
 path = "//home/pi/Documents/ungdom/Test/pic"
-
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 import logging
 from waveshare_epd import epd2in7
 import time
@@ -27,6 +29,35 @@ key1 = Button(5)
 key2 = Button(6)
 key3 = Button(13)
 key4 = Button(19)
+
+events = [event.to_dict() for event in events]
+
+database = os.getcwd() + '/events.db'
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{database}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Event(db.Model):
+    __tablename__ = 'event'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    start = db.Column(db.DateTime, nullable=False)
+    end = db.Column(db.DateTime, nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'start': self.start.isoformat(),
+            'end': self.end.isoformat()
+        }
+
+  
+
+
+
+
 def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
 
 
@@ -127,8 +158,9 @@ try:
 
         if key3.is_pressed == True:
             
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage3")
+            events = [event.to_dict() for event in events]
+             
+            print(events)
             time.sleep(0.5)
         
         if key4.is_pressed == True:
