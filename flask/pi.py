@@ -7,7 +7,8 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import logging
-from waveshare_epd import epd2in7
+#from waveshare_epd import epd2in7
+from epaper import epd2in7
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
