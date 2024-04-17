@@ -193,13 +193,13 @@ try:
     print(1)
     
 
-except IOError as e:
-    logging.info(e)
+#except IOError as e:
+#    logging.info(e)
     
-except KeyboardInterrupt:    
-    logging.info("ctrl + c:")
-    epd2in7.epdconfig.module_exit(cleanup=True)
-    exit()
+#except KeyboardInterrupt:    
+#    logging.info("ctrl + c:")
+#    epd2in7.epdconfig.module_exit(cleanup=True)
+#    exit()
 
 
 
