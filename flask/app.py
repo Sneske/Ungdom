@@ -16,6 +16,83 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+currentDay = "currentDay"
+selectDay = "selectDay"
+nextDay = "nextDay"
+lastDay = "lastDay"
+currentTime = 12 
+selectTime = 11
+dayScroll = 0
+
+key1 = Button(5)
+key2 = Button(6)
+key3 = Button(13)
+key4 = Button(19)
+
+
+def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
+
+
+    def line(x,y,xp,yp,fill):
+        return draw.line((x, y, x+xp, y+yp), fill = fill)
+
+    def react(x,y,xp,yp,fill,fillType):
+
+        if fillType == 0:
+            return draw.rectangle((x, y, x+xp, y+yp ), outline = fill)
+        else: 
+            return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
+
+
+    def text(x,y,font,fill,text):
+        draw.text((x, y), text, font = font, fill = fill)
+
+    #logging.info("epd2in7 Demo")   
+    epd = epd2in7.EPD()
+    #'''2Gray(Black and white) display'''
+    #logging.info("init and Clear")
+    epd.init()
+    epd.Clear(0xFF)
+    font24 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 24)
+    font18 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 18)
+    font35 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 35)
+    font12 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 12)
+    #Drawing on the Horizontal image
+    #logging.info("1.Drawing on the Horizontal image...")
+    Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
+    draw = ImageDraw.Draw(Himage)
+    react(0,136,264,40,0,255)
+    line(88, 176, 0, -176, 0)
+    line(174, 176, 0, -176, 0)
+
+   
+    text(176,136,font12,255,nextDay)    
+    text(90,136,font12,255,selectDay)
+    text(2,136,font12,255,lastDay)
+    for i in range(8):
+        line(0 , 17*i , 264 , 0,0)
+    
+    for i in range(3):
+        react(22+i*86,0,65,136,255,1)
+
+    react(194,0,68,136,255,1)
+    for i in range(8):
+        for x in range(3):
+            if days[x+1][selectTime-4+i] ==1:
+                #print(days[selectTime-4+i,x+1])
+                react(x*88,i*17,88,17,0,1) 
+                text(2+x*88,3+i*17,font12,255,str(selectTime-4+i)+":00")
+
+
+            else:
+                #print(days[selectTime-4+i,x+1])
+                text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
+
+    epd.display(epd.getbuffer(Himage))
+    
+    
+
+
 # class der forbinder databasen, så det er mulig at hente og sende data til databasen.
 class Event(db.Model):
     __tablename__ = 'event'
@@ -119,6 +196,7 @@ def add_event():
 
 @app.route('/update_event', methods=['POST'])
 def update_event():
+    run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
     data = request.get_json()
     event = Event.query.get(int(data['id']))
     if event:
