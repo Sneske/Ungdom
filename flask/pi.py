@@ -127,38 +127,6 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,da
     #logging.info("Goto Sleep...")
     
 
-
-
-
-@app.route('/')
-def index():
-    events = Event.query.all()
-    return render_template('calendar.html', events=[event.to_dict() for event in events])
-
-@app.route('/add_event', methods=['GET', 'POST'])
-def add_event():
-    if request.method == 'POST':
-        title = request.form['title']
-        start = datetime.fromisoformat(request.form['start'])
-        end = datetime.fromisoformat(request.form['end'])
-        event = Event(title=title, start=start, end=end)
-        db.session.add(event)
-        db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('add_event.html')
-
-@app.route('/update_event', methods=['POST'])
-def update_event():
-    data = request.get_json()
-    event = Event.query.get(int(data['id']))
-    if event:
-        event.start = datetime.fromisoformat(data['start'])
-        event.end = datetime.fromisoformat(data['end'] if data['end'] else data['start'])
-        db.session.commit()
-    return jsonify(success=True)
-
-if __name__ == '__main__':
-    app.run(debug=True)
 try:
     print(2)
     run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
@@ -190,6 +158,38 @@ try:
             print("kage4")
             time.sleep(0.5)
         
+
+
+@app.route('/')
+def index():
+    events = Event.query.all()
+    return render_template('calendar.html', events=[event.to_dict() for event in events])
+
+@app.route('/add_event', methods=['GET', 'POST'])
+def add_event():
+    if request.method == 'POST':
+        title = request.form['title']
+        start = datetime.fromisoformat(request.form['start'])
+        end = datetime.fromisoformat(request.form['end'])
+        event = Event(title=title, start=start, end=end)
+        db.session.add(event)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('add_event.html')
+
+@app.route('/update_event', methods=['POST'])
+def update_event():
+    data = request.get_json()
+    event = Event.query.get(int(data['id']))
+    if event:
+        event.start = datetime.fromisoformat(data['start'])
+        event.end = datetime.fromisoformat(data['end'] if data['end'] else data['start'])
+        db.session.commit()
+    return jsonify(success=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
     print(1)
     
 
