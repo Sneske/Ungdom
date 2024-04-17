@@ -196,7 +196,12 @@ def add_event():
 
 @app.route('/update_event', methods=['POST'])
 def update_event():
-    run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+    try:
+        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+    except KeyboardInterrupt:    
+        logging.info("ctrl + c:")
+        epd2in7.epdconfig.module_exit(cleanup=True)
+        exit()
     data = request.get_json()
     event = Event.query.get(int(data['id']))
     if event:
@@ -207,3 +212,5 @@ def update_event():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
