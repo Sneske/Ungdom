@@ -55,8 +55,7 @@ class Event(db.Model):
             'end': self.end.isoformat()
         }
 
-events = Event.query.all()
-events = [event.to_dict() for event in events]
+
   
 
 
@@ -161,9 +160,10 @@ try:
             time.sleep(0.5)
 
         if key3.is_pressed == True:
-            
+            events = Event.query.all()
             events = [event.to_dict() for event in events]
-             
+            
+            
             print(events)
             time.sleep(0.5)
         
