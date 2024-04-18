@@ -10,7 +10,7 @@ import base64
 import os
 from gpiozero import LED, Button
 from signal import pause
-from waveshare-epd import epd2in7
+from waveshare_epd import epd2in7
 import subprocess
 database = os.getcwd() + '/events.db'
 app = Flask(__name__)
