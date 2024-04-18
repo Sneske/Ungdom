@@ -137,7 +137,7 @@ def update_event():
     data = request.get_json()
     event = Event.query.get(int(data['id']))
 
-    subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days])
+    subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay])
     if event:
         event.start = datetime.fromisoformat(data['start'])
         event.end = datetime.fromisoformat(data['end'] if data['end'] else data['start'])
