@@ -17,16 +17,16 @@ import traceback
 from gpiozero import LED, Button
 from signal import pause
 
-currentDay = "currentDay"
-selectDay = "selectDay"
-nextDay = "nextDay"
-lastDay = "lastDay"
-currentTime = 12 
-selectTime = 11
-dayScroll = 0
+currentDay = sys.argv[1]
+selectDay = sys.argv[2]
+nextDay = sys.argv[3]
+lastDay = sys.argv[4]
+currentTime = sys.argv[5] 
+selectTime = sys.argv[6]
+dayScroll = sys.argv[7]
 #logging.basicConfig(level=logging.DEBUG)
 on = True
-days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
+days = sys.argv[8]
 
 key1 = Button(5)
 key2 = Button(6)
