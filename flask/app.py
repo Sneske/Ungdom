@@ -180,6 +180,12 @@ def logout():
 
 @app.route('/')
 def index():
+    try:
+        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+    except KeyboardInterrupt:    
+        logging.info("ctrl + c:")
+        epd2in7.epdconfig.module_exit(cleanup=True)
+        exit()
     events = Event.query.all()
     return render_template('calendar.html', events=[event.to_dict() for event in events])
 
@@ -197,12 +203,7 @@ def add_event():
 
 @app.route('/update_event', methods=['POST'])
 def update_event():
-    try:
-        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-    except KeyboardInterrupt:    
-        logging.info("ctrl + c:")
-        epd2in7.epdconfig.module_exit(cleanup=True)
-        exit()
+    
     data = request.get_json()
     event = Event.query.get(int(data['id']))
     if event:
