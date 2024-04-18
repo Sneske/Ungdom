@@ -16,7 +16,7 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 from gpiozero import LED, Button
 from signal import pause
-from gpiozero import Button
+
 currentDay = "currentDay"
 selectDay = "selectDay"
 nextDay = "nextDay"

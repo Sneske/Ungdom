@@ -8,7 +8,8 @@ from datetime import datetime
 from flask_wtf import FlaskForm
 import base64
 import os
-
+from gpiozero import LED, Button
+from signal import pause
 database = os.getcwd() + '/events.db'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5c59e31d0c4e528fe5647908e15807a5' # ændrer scret key instillingen for at beskytte hjemmeside mod angreb
