@@ -25,9 +25,9 @@ currentDay = "currentDay"
 selectDay = "selectDay"
 nextDay = "nextDay"
 lastDay = "lastDay"
-currentTime = 12 
-selectTime = 11
-dayScroll = 0
+#currentTime = 12 
+#selectTime = 11
+#dayScroll = 0
 
 days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
 # class der forbinder databasen, så det er mulig at hente og sende data til databasen.
@@ -137,7 +137,7 @@ def update_event():
     data = request.get_json()
     event = Event.query.get(int(data['id']))
 
-    subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days])
+    subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay])
     if event:
         event.start = datetime.fromisoformat(data['start'])
         event.end = datetime.fromisoformat(data['end'] if data['end'] else data['start'])
