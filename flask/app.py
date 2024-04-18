@@ -209,8 +209,6 @@ def update_event():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
-    app.run(debug=True)
     if key4 == True:
         try:
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
@@ -218,3 +216,7 @@ if __name__ == '__main__':
             logging.info("ctrl + c:")
             epd2in7.epdconfig.module_exit(cleanup=True)
             exit()
+
+    app.run(host="0.0.0.0")
+    app.run(debug=True)
+    
