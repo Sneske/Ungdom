@@ -180,12 +180,6 @@ def logout():
 
 @app.route('/')
 def index():
-    try:
-        run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-    except KeyboardInterrupt:    
-        logging.info("ctrl + c:")
-        epd2in7.epdconfig.module_exit(cleanup=True)
-        exit()
     events = Event.query.all()
     return render_template('calendar.html', events=[event.to_dict() for event in events])
 
@@ -212,8 +206,15 @@ def update_event():
         db.session.commit()
     return jsonify(success=True)
 
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
     app.run(debug=True)
-
-
+    if key4 == True:
+        try:
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+        except KeyboardInterrupt:    
+            logging.info("ctrl + c:")
+            epd2in7.epdconfig.module_exit(cleanup=True)
+            exit()
