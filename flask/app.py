@@ -68,7 +68,7 @@ class loginclass(FlaskForm):
 
 
 #Login og signup funktioner
-
+subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,days])
 # denne funktioner opretter en bruger
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -137,7 +137,7 @@ def update_event():
     data = request.get_json()
     event = Event.query.get(int(data['id']))
 
-    subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay])
+    
     if event:
         event.start = datetime.fromisoformat(data['start'])
         event.end = datetime.fromisoformat(data['end'] if data['end'] else data['start'])
