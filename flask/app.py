@@ -1,8 +1,6 @@
 import os
-from gpiozero import LED, Button
 from signal import pause
 import logging
-from waveshare_epd import epd2in7
 from flask import Flask, render_template, redirect, url_for, flash, session, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import StringField, PasswordField, SubmitField
