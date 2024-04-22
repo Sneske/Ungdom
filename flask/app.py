@@ -1,3 +1,7 @@
+import os
+from gpiozero import LED, Button
+from signal import pause
+from waveshare_epd import epd2in7
 from flask import Flask, render_template, redirect, url_for, flash, session, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import StringField, PasswordField, SubmitField
@@ -5,13 +9,10 @@ from wtforms.validators import DataRequired, Length, EqualTo
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from datetime import datetime
+
 from flask_wtf import FlaskForm
-import base64
-import os
-from gpiozero import LED, Button
-from signal import pause
-from waveshare_epd import epd2in7
 import subprocess
+import base64
 #import serial 
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1) #insert usb port 
 database = os.getcwd() + '/events.db'
