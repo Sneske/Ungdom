@@ -34,7 +34,7 @@ lastDay = "lastDay"
 #dayScroll = 0
 #data_to_send = 0
 days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
-days = 0
+days = "1"
 # class der forbinder databasen, så det er mulig at hente og sende data til databasen.
 class Event(db.Model):
     __tablename__ = 'event'
