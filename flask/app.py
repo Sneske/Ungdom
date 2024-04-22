@@ -12,6 +12,8 @@ from gpiozero import LED, Button
 from signal import pause
 from waveshare_epd import epd2in7
 import subprocess
+import serial 
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1) #insert usb port 
 database = os.getcwd() + '/events.db'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5c59e31d0c4e528fe5647908e15807a5' # ændrer scret key instillingen for at beskytte hjemmeside mod angreb
@@ -28,7 +30,7 @@ lastDay = "lastDay"
 #currentTime = 12 
 #selectTime = 11
 #dayScroll = 0
-
+data_to_send = 0
 days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
 # class der forbinder databasen, så det er mulig at hente og sende data til databasen.
 class Event(db.Model):
@@ -66,7 +68,15 @@ class loginclass(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()], render_kw={'placeholder': '********'})
     submit = SubmitField('Login')
 
-
+def updateRing(Data_to_send):
+    data_to_send = Data_to_send
+    if data_to_send == 0:
+        data_to_send = 1
+    else: 
+        data_to_send = 0
+    ser.write(data_to_send.encode())
+    time.sleep(1)
+    
 #Login og signup funktioner
 subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,days])
 subprocess.Popen(["c++","ring.ino"])
