@@ -69,6 +69,7 @@ class loginclass(FlaskForm):
 
 #Login og signup funktioner
 subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,days])
+subprocess.Popen(["c++","ring.ino"])
 # denne funktioner opretter en bruger
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
