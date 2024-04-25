@@ -21,23 +21,36 @@ currentDay = sys.argv[1]
 selectDay = sys.argv[2]
 nextDay = sys.argv[3]
 lastDay = sys.argv[4]
+
 #currentTime = sys.argv[5] 
 #selectTime = sys.argv[6]
 #dayScroll = sys.argv[7]
 #logging.basicConfig(level=logging.DEBUG)
 currentTime = 12 
-selectTime = 11
-dayScroll = 0
+selectTime = currentTime
+
 days = sys.argv[5]
 
 on = True
-days = {1:[1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,0,1,1,0],2:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1],3:[1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1]}
+days = {1: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {2: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {3: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {4: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {5: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {6: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {7: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {8: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 
+0, 1, 0, 1, 0, 1, 0, 1, 0]}, {9: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {10: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {11: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {12: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {13: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {14: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {15: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {16: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {17: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {18: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {19: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {20: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {21: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {22: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {23: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 
+1, 0, 1, 0, 1, 0]}, {24: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {25: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {26: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {27: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {28: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {29: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {30: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}, {31: [1, 0, 1, 0, 1, 0, 
+1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]}
 
+
+
+currentDay = 22
+selectDay = currentDay
+nextDay = currentDay +1
+lastDay = currentDay -1
 
 key1 = Button(5)
 key2 = Button(6)
 key3 = Button(13)
 key4 = Button(19)
+
+
 
 
 database = os.getcwd() + '/events.db'
@@ -61,51 +74,39 @@ class Event(db.Model):
             'end': self.end.isoformat()
         }
 
-
+def line(x,y,xp,yp,fill):
+    return draw.line((x, y, x+xp, y+yp), fill = fill)
+def react(x,y,xp,yp,fill,fillType):
+    if fillType == 0:
+        return draw.rectangle((x, y, x+xp, y+yp ), outline = fill)
+    else: 
+        return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
+def text(x,y,font,fill,text):
+    draw.text((x, y), text, font = font, fill = fill)
   
 
 
 
 
 def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
+  
 
 
-    def line(x,y,xp,yp,fill):
-        return draw.line((x, y, x+xp, y+yp), fill = fill)
-
-    def react(x,y,xp,yp,fill,fillType):
-
-        if fillType == 0:
-            return draw.rectangle((x, y, x+xp, y+yp ), outline = fill)
-        else: 
-            return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
-
-
-    def text(x,y,font,fill,text):
-        draw.text((x, y), text, font = font, fill = fill)
-
-    #logging.info("epd2in7 Demo")   
     epd = epd2in7.EPD()
-    #'''2Gray(Black and white) display'''
-    #logging.info("init and Clear")
     epd.init()
     epd.Clear(0xFF)
-    font24 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 24)
-    font18 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 18)
-    font35 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 35)
     font12 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 12)
-    #Drawing on the Horizontal image
-    #logging.info("1.Drawing on the Horizontal image...")
-    Himage = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
+
+    Himage = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(Himage)
     react(0,136,264,40,0,255)
     line(88, 176, 0, -176, 0)
     line(174, 176, 0, -176, 0)
 
    
-    text(176,136,font12,255,nextDay)    
-    text(90,136,font12,255,selectDay)
-    text(2,136,font12,255,lastDay)
+    text(176,136,font12,255,str(nextDay)+"April")    
+    text(90,136,font12,255,str(selectDay)+"April")
+    text(2,136,font12,255,str(lastDay)+"April")
     for i in range(8):
         line(0 , 17*i , 264 , 0,0)
     
@@ -115,27 +116,17 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,da
     react(194,0,68,136,255,1)
     for i in range(8):
         for x in range(3):
-            if days[x+1][selectTime-4+i] ==1:
-                #print(days[selectTime-4+i,x+1])
+            if days[x-2+selectDay][selectTime-4+i] ==1:
                 react(x*88,i*17,88,17,0,1) 
                 text(2+x*88,3+i*17,font12,255,str(selectTime-4+i)+":00")
-
-
             else:
-                #print(days[selectTime-4+i,x+1])
                 text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
 
     epd.display(epd.getbuffer(Himage))
-    
 
-    #logging.info("Clear...")
-    #epd.Clear(0xFF)
-    #logging.info("Goto Sleep...")
-    
 
 
 try:
-    print(2)
     run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
     while on:
         if key1.is_pressed == True:
@@ -151,25 +142,27 @@ try:
 
         if key3.is_pressed == True:
         
-            events = Event.query.all()
-            #events = [event.to_dict() for event in events]
-            for event in events:
-                print(event.id)
+            #events = Event.query.all()
+            
+            #for event in events:
+            #    print(event.id)
             
             
-            time.sleep(0.5)
+            #time.sleep(0.5)
+
+            selectDay += 1
+
+
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+            print("kage3")
+            time.sleep(0.5) 
         
         if key4.is_pressed == True:
-             
+            selectDay += 1 
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
             print("kage4")
             time.sleep(0.5)
-        
-    print(1)
     
-
-#except IOError as e:
-#    logging.info(e)
     
 except KeyboardInterrupt:    
     logging.info("ctrl + c:")
