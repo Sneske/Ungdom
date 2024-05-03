@@ -95,8 +95,8 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
             return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
     def text(x,y,font,fill,text):
         draw.text((x, y), text, font = font, fill = fill)
-    nextDay = currentDay +1
-    lastDay = currentDay -1
+    nextDay = selectDay +1
+    lastDay = selectDay -1
     react(0,136,264,40,0,255)
     line(88, 176, 0, -176, 0)
     line(174, 176, 0, -176, 0)
