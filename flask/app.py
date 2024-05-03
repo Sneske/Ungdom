@@ -79,7 +79,7 @@ def updateRing(Data_to_send):
     time.sleep(1)
     
 #Login og signup funktioner
-subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay,days])
+subprocess.Popen(["python","pi.py",currentDay,selectDay,nextDay,lastDay])
 subprocess.Popen(["c++","ring.ino"])
 # denne funktioner opretter en bruger
 @app.route('/signup', methods=['GET', 'POST'])
