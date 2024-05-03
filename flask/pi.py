@@ -40,7 +40,7 @@ days = {1: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1,
 
 
 
-currentDay = 22
+currentDay = 11
 selectDay = currentDay
 nextDay = currentDay +1
 lastDay = currentDay -1
