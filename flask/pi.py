@@ -130,6 +130,7 @@ try:
             time.sleep(0.5)
         if key2.is_pressed == True:
             selectTime += 1
+            print("kage")
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
             time.sleep(0.5)
 
