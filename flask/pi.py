@@ -88,7 +88,7 @@ def text(x,y,font,fill,text):
 
 
 
-def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
+def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
     epd = epd2in7.EPD()
     epd.init()
     epd.Clear(0xFF)
@@ -121,29 +121,29 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,da
 
 
 try:
-    run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+    run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
     while on:
         if key1.is_pressed == True:
             selectTime -= 1
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
 
             time.sleep(0.5)
         if key2.is_pressed == True:
             selectTime += 1
             print("kage")
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
             time.sleep(0.5)
 
         if key3.is_pressed == True:
             selectDay += 1
             print("pik")
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
             time.sleep(0.5) 
         
         if key4.is_pressed == True:
             print("homo")
             selectDay -= 1 
-            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
+            run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
             time.sleep(0.5)
     
     
