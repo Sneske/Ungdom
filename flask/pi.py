@@ -89,21 +89,15 @@ def text(x,y,font,fill,text):
 
 
 def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days):
-  
-
-
     epd = epd2in7.EPD()
     epd.init()
     epd.Clear(0xFF)
     font12 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 12)
-
     Himage = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(Himage)
     react(0,136,264,40,0,255)
     line(88, 176, 0, -176, 0)
     line(174, 176, 0, -176, 0)
-
-   
     text(176,136,font12,255,str(nextDay)+"April")    
     text(90,136,font12,255,str(selectDay)+"April")
     text(2,136,font12,255,str(lastDay)+"April")
@@ -132,35 +126,23 @@ try:
         if key1.is_pressed == True:
             selectTime -= 1
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage1")
+
             time.sleep(0.5)
         if key2.is_pressed == True:
             selectTime += 1
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage2")
             time.sleep(0.5)
 
         if key3.is_pressed == True:
-        
-            #events = Event.query.all()
-            
-            #for event in events:
-            #    print(event.id)
-            
-            
-            #time.sleep(0.5)
-
             selectDay += 1
-
-
+            print("pik")
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage3")
             time.sleep(0.5) 
         
         if key4.is_pressed == True:
-            selectDay += 1 
+            print("homo")
+            selectDay -= 1 
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,dayScroll,days)
-            print("kage4")
             time.sleep(0.5)
     
     
