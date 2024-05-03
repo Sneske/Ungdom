@@ -110,7 +110,7 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
     react(194,0,68,136,255,1)
     for i in range(8):
         for x in range(3):
-            if days[x-2+selectDay][selectTime-4+i] ==1:
+            if days[x+selectDay][selectTime-4+i] == 1:
                 react(x*88,i*17,88,17,0,1) 
                 text(2+x*88,3+i*17,font12,255,str(selectTime-4+i)+":00")
             else:
