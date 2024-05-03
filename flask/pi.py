@@ -26,7 +26,7 @@ lastDay = sys.argv[4]
 #selectTime = sys.argv[6]
 #dayScroll = sys.argv[7]
 #logging.basicConfig(level=logging.DEBUG)
-currentTime = 12 
+currentTime = 7 
 selectTime = currentTime
 
 days = sys.argv[5]
