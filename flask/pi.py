@@ -146,6 +146,8 @@ try:
 
         if key3.is_pressed == True:
             selectDay += 1
+            lastDay += 1
+            nextDay += 1
             print("pik")
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
             time.sleep(0.5) 
@@ -153,6 +155,8 @@ try:
         if key4.is_pressed == True:
             print("homo")
             selectDay -= 1 
+            lastDay -= 1
+            nextDay -= 1
             run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days)
             time.sleep(0.5)
     
