@@ -117,6 +117,8 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
                 else:
                     text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
             else:
+                print(len(days))
+                print(len(days[x+selectDay]))
                 print(x+selectDay)
                 print(selectTime-4+i)
                 print("fuck")
