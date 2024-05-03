@@ -74,15 +74,6 @@ class Event(db.Model):
             'end': self.end.isoformat()
         }
 
-def line(x,y,xp,yp,fill):
-    return draw.line((x, y, x+xp, y+yp), fill = fill)
-def react(x,y,xp,yp,fill,fillType):
-    if fillType == 0:
-        return draw.rectangle((x, y, x+xp, y+yp ), outline = fill)
-    else: 
-        return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
-def text(x,y,font,fill,text):
-    draw.text((x, y), text, font = font, fill = fill)
   
 
 
@@ -95,6 +86,15 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
     font12 = ImageFont.truetype(os.path.join(path, 'Font.ttc'), 12)
     Himage = Image.new('1', (epd.height, epd.width), 255)
     draw = ImageDraw.Draw(Himage)
+    def line(x,y,xp,yp,fill):
+        return draw.line((x, y, x+xp, y+yp), fill = fill)
+    def react(x,y,xp,yp,fill,fillType):
+        if fillType == 0:
+            return draw.rectangle((x, y, x+xp, y+yp ), outline = fill)
+        else: 
+            return draw.rectangle((x, y, x+xp, y+yp), fill = fill)
+    def text(x,y,font,fill,text):
+        draw.text((x, y), text, font = font, fill = fill)
     react(0,136,264,40,0,255)
     line(88, 176, 0, -176, 0)
     line(174, 176, 0, -176, 0)
