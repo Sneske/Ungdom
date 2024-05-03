@@ -26,7 +26,7 @@ lastDay = sys.argv[4]
 #selectTime = sys.argv[6]
 #dayScroll = sys.argv[7]
 #logging.basicConfig(level=logging.DEBUG)
-currentTime = 7 
+currentTime = 13 
 selectTime = currentTime
 
 days = sys.argv[5]
@@ -110,11 +110,17 @@ def run(currentDay,selectDay,nextDay,lastDay,currentTime,selectTime,days):
     react(194,0,68,136,255,1)
     for i in range(8):
         for x in range(3):
-            if days[x+selectDay][selectTime-4+i] == 1:
-                react(x*88,i*17,88,17,0,1) 
-                text(2+x*88,3+i*17,font12,255,str(selectTime-4+i)+":00")
+            if 0 <= x+selectDay < len(days) and 0 <= selectTime-4+i < len(days[x+selectDay]):
+                if days[x+selectDay][selectTime-4+i] == 1:
+                    react(x*88,i*17,88,17,0,1) 
+                    text(2+x*88,3+i*17,font12,255,str(selectTime-4+i)+":00")
+                else:
+                    text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
             else:
-                text(2+x*88,3+i*17,font12,0,str(selectTime-4+i)+":00")
+                print(x+selectDay)
+                print(selectTime-4+i)
+                print("fuck")
+                pass
 
     epd.display(epd.getbuffer(Himage))
 
